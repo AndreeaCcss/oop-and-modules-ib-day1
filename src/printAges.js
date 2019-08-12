@@ -14,7 +14,7 @@ module.exports.printAges = (users) => {
     // Now we can refer to `user.name` simply as `name`.
     const { name, dateOfBirth } = user
 
-    // We extract the date of birth using a specialized function from another module.
+    // We convert each user's date of birth (string) into a number.
     const birthday = getUserBirthDate(user)
     
     // How long they've lived in milliseconds.
@@ -24,7 +24,7 @@ module.exports.printAges = (users) => {
     // Unix epoch is 01-01-1970
     // Math.abs is used in case they were born before 1970
     const theirAge = Math.abs(unixEpochPlusTheirLifetime.getUTCFullYear() - 1970)
-    userAgeStrings.push(`${name} is ${theirAge} years old.`)
+    userAgeStrings.push(`${user.name} is ${theirAge} years old.`)
   }
   return userAgeStrings
 }
